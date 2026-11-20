@@ -37,7 +37,7 @@ magiskboot sha1 <file>
 ## Credits & Acknowledgements
 
 - Inspired by the original MagiskBoot utility by **topjohnwu**.
-- Reference format behavior guided by the Android Open Source Project (AOSP) and pymagiskboot.
+- Reference format specifications guided by the Android Open Source Project (AOSP).
 - Re-architected and implemented independently in Rust.
 
 ## License
