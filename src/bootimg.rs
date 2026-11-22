@@ -1035,6 +1035,16 @@ fn parse_boot_image(path: &str) -> Result<ParsedBootImage, String> {
                     flags.avb = true;
                     avb_footer_offset = Some(footer_off);
                     vbmeta_range = Some((abs_vb_off, vb_sz));
+                    if hdr.kind == HeaderKind::V4
+                        && !hdr.is_vendor()
+                        && hdr.signature_size() == 0
+                        && ignore_size == 0
+                        && abs_vb_off > off
+                        && abs_vb_off - off <= 65536
+                        && data[off..].starts_with(AVB_MAGIC)
+                    {
+                        ignore_size = abs_vb_off - off;
+                    }
                 }
             }
         }
